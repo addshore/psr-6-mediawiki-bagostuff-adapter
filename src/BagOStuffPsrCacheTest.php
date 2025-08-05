@@ -3,7 +3,7 @@
 namespace Addshore\Psr\Cache\MWBagOStuffAdapter;
 
 use Cache\IntegrationTests\CachePoolTest;
-use HashBagOStuff;
+use Wikimedia\ObjectCache\HashBagOStuff;
 
 require_once __DIR__ . '/../vendor/cache/integration-tests/src/CachePoolTest.php';
 
@@ -12,9 +12,13 @@ require_once __DIR__ . '/../vendor/cache/integration-tests/src/CachePoolTest.php
  */
 class BagOStuffPsrCacheTest extends CachePoolTest {
 
-	private $bagOStuff;
+	/**
+	 * Simple BagOStuff implementation to use for the test
+	 * @var HashBagOStuff
+	 */
+	private HashBagOStuff $bagOStuff;
 
-	public function setUp() {
+	public function setUp(): void {
 		// One HashBagOStuff per used per test (this is a cache after all)...
 		$this->bagOStuff = new HashBagOStuff();
 
