@@ -16,15 +16,8 @@
     "jakub-onderka/php-parallel-lint": "^0.9.2",
     "mediawiki/mediawiki-codesniffer": "^0.7.2",
     "phpunit/phpunit": "~4.8.0|~5.3.0",
-    "cache/integration-tests": "~0.9.1",
-    "mediawiki/mediawiki": "dev-REL1_30 as 1.30.x-dev"
+    "cache/integration-tests": "~0.9.1"
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/wikimedia/mediawiki"
-    }
-  ],
   "scripts": {
     "lint": "parallel-lint . --exclude vendor",
     "phpunit": "phpunit",
@@ -49,7 +42,11 @@
       "Mediawiki\\Api\\Test\\": ["tests/integration", "tests/unit"]
     },
     "files": [
-      "vendor/mediawiki/mediawiki/includes/libs/objectcache/HashBagOStuff.php"
+      "tests/mediawiki/includes/cache/IExpiringStore.php",
+      "tests/mediawiki/includes/libs/ScopedCallback.php",
+      "tests/mediawiki/includes/libs/WaitConditionLoop.php",
+      "tests/mediawiki/includes/libs/objectcache/BagOStuff.php",
+      "tests/mediawiki/includes/libs/objectcache/HashBagOStuff.php"
     ]
   }
 }

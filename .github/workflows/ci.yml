@@ -12,6 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Download MediaWiki test dependencies
+      run: |
+        mkdir -p tests/mediawiki/includes/cache
+        mkdir -p tests/mediawiki/includes/libs/objectcache
+        wget -O tests/mediawiki/includes/libs/objectcache/BagOStuff.php https://raw.githubusercontent.com/wikimedia/mediawiki/REL1_30/includes/libs/objectcache/BagOStuff.php
+        wget -O tests/mediawiki/includes/libs/objectcache/HashBagOStuff.php https://raw.githubusercontent.com/wikimedia/mediawiki/REL1_30/includes/libs/objectcache/HashBagOStuff.php
+        wget -O tests/mediawiki/includes/cache/IExpiringStore.php https://raw.githubusercontent.com/wikimedia/mediawiki/REL1_30/includes/cache/IExpiringStore.php
+        wget -O tests/mediawiki/includes/libs/ScopedCallback.php https://raw.githubusercontent.com/wikimedia/mediawiki/REL1_30/includes/libs/ScopedCallback.php
+        wget -O tests/mediawiki/includes/libs/WaitConditionLoop.php https://raw.githubusercontent.com/wikimedia/mediawiki/REL1_30/includes/libs/WaitConditionLoop.php
+
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
