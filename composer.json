@@ -20,7 +20,7 @@
   },
   "scripts": {
     "lint": "parallel-lint . --exclude vendor",
-    "sniff": "phpcs -ps",
+    "sniff": "phpcs -ps src",
     "phpunit": "phpunit",
     "phpunit-unit": "phpunit --testsuite unit",
     "phpunit-integration": "phpunit --testsuite integration",
