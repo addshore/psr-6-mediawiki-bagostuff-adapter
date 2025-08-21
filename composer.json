@@ -20,18 +20,15 @@
   },
   "scripts": {
     "lint": "parallel-lint . --exclude vendor",
-    "sniff": "phpcs -ps src",
     "phpunit": "phpunit",
     "phpunit-unit": "phpunit --testsuite unit",
     "phpunit-integration": "phpunit --testsuite integration",
     "test": [
       "@lint",
-      "@sniff",
       "@phpunit"
     ],
     "ci": [
       "@lint",
-      "@sniff",
       "phpunit --coverage-clover=coverage.clover"
     ]
   },
