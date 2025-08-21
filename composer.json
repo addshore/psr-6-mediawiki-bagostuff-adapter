@@ -29,7 +29,7 @@
     ],
     "ci": [
       "@lint",
-      "phpunit --coverage-clover=coverage.clover"
+      "phpunit src --coverage-clover=coverage.clover"
     ]
   },
   "autoload": {
