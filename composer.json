@@ -15,15 +15,11 @@
   },
   "require-dev": {
     "php-parallel-lint/php-parallel-lint": "^1.4",
-    "mediawiki/mediawiki-codesniffer": "47.0",
-    "phpunit/phpunit": "~9.6"
+    "mediawiki/mediawiki-codesniffer": "47.0"
   },
   "scripts": {
     "lint": "parallel-lint . --exclude vendor",
     "sniff": "phpcs -ps",
-    "phpunit": "phpunit",
-    "phpunit-unit": "phpunit --testsuite unit",
-    "phpunit-integration": "phpunit --testsuite integration",
     "test": [
       "@lint",
       "@sniff",
@@ -31,8 +27,7 @@
     ],
     "ci": [
       "@lint",
-      "@sniff",
-      "phpunit --coverage-clover=coverage.clover"
+      "@sniff"
     ]
   },
   "autoload": {
@@ -43,6 +38,11 @@
   "autoload-dev": {
     "psr-4": {
       "Mediawiki\\Api\\Test\\": ["tests/integration", "tests/unit"]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   }
 }
