@@ -3,7 +3,7 @@
   "type": "library",
   "description": "A MediaWiki BagOStuff PSR-6 adapter library",
   "keywords": ["Mediawiki", "Cache"],
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Addshore"
