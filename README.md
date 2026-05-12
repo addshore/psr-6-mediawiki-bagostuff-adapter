@@ -7,6 +7,11 @@ This library provides a PSR-6 cache pool adapter for MediaWiki's `BagOStuff` cac
 - PHP `^8.2`
 - `psr/cache:^3.0`
 
+## Versions
+
+- 0.1: Initial version, compatible with PSR/cache ^1.0.0
+- 0.2: Updated to be compatible with PSR/cache ^3.0
+
 ## Installation
 
 Install with Composer:
