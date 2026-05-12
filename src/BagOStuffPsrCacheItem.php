@@ -141,9 +141,15 @@ class BagOStuffPsrCacheItem implements CacheItemInterface {
 	 *   The called object.
 	 */
 	public function expiresAfter( int|DateInterval|null $time ): static {
+		if ( $time === null ) {
+			$this->expiration = null;
+
+			return $this;
+		}
+
 		if ( $time instanceof DateInterval ) {
 			$interval = $time;
-		} elseif ( (int)$time == $time ) {
+		} elseif ( is_int( $time ) ) {
 			$interval = new DateInterval( 'PT' . $time . 'S' );
 		} else {
 			throw new BagOStuffPsrCacheInvalidArgumentException(

@@ -15,11 +15,13 @@
   },
   "require-dev": {
     "php-parallel-lint/php-parallel-lint": "^1.4",
-    "mediawiki/mediawiki-codesniffer": "47.0"
+    "mediawiki/mediawiki-codesniffer": "47.0",
+    "phpunit/phpunit": "^11.5"
   },
   "scripts": {
     "lint": "parallel-lint . --exclude vendor",
-    "sniff": "phpcs -ps",
+    "sniff": "phpcs -ps --runtime-set installed_paths vendor/mediawiki/mediawiki-codesniffer,vendor/phpcsstandards/phpcsextra",
+    "phpunit": "phpunit -c phpunit.xml.dist",
     "test": [
       "@lint",
       "@sniff",
@@ -27,7 +29,8 @@
     ],
     "ci": [
       "@lint",
-      "@sniff"
+      "@sniff",
+      "@phpunit"
     ]
   },
   "autoload": {
@@ -37,7 +40,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Mediawiki\\Api\\Test\\": ["tests/integration", "tests/unit"]
+      "Addshore\\Psr\\Cache\\MWBagOStuffAdapter\\Tests\\": "tests/unit/",
+      "Wikimedia\\ObjectCache\\": "tests/stubs/ObjectCache/"
     }
   },
   "config": {
