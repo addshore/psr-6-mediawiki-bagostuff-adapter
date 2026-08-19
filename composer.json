@@ -16,7 +16,8 @@
   "require-dev": {
     "php-parallel-lint/php-parallel-lint": "^1.4",
     "mediawiki/mediawiki-codesniffer": "47.0",
-    "phpunit/phpunit": "^11.5"
+    "phpunit/phpunit": "^11.5",
+    "cache/integration-tests": "^1.0"
   },
   "scripts": {
     "lint": "parallel-lint . --exclude vendor",
@@ -41,6 +42,7 @@
   "autoload-dev": {
     "psr-4": {
       "Addshore\\Psr\\Cache\\MWBagOStuffAdapter\\Tests\\": "tests/unit/",
+      "Addshore\\Psr\\Cache\\MWBagOStuffAdapter\\Tests\\Integration\\": "tests/integration/",
       "Wikimedia\\ObjectCache\\": "tests/stubs/ObjectCache/"
     }
   },
