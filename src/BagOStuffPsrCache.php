@@ -187,6 +187,16 @@ class BagOStuffPsrCache implements CacheItemPoolInterface {
 	public function deleteItem( string $key ): bool {
 		$this->throwExceptionOnBadKey( $key );
 
+		return $this->doDeleteItem( $key );
+	}
+
+	/**
+	 * Removes an item from the underlying store without key validation.
+	 *
+	 * @param string $key A key that has already been validated
+	 * @return bool
+	 */
+	private function doDeleteItem( string $key ): bool {
 		return $this->bagOStuff->delete( $key );
 	}
 
@@ -204,9 +214,14 @@ class BagOStuffPsrCache implements CacheItemPoolInterface {
 	 *   True if the items were successfully removed. False if there was an error.
 	 */
 	public function deleteItems( array $keys ): bool {
+		// Validate all keys before performing any deletions
+		foreach ( $keys as $key ) {
+			$this->throwExceptionOnBadKey( $key );
+		}
+
 		$totalReturn = true;
 		foreach ( $keys as $key ) {
-			$innerReturn = $this->deleteItem( $key );
+			$innerReturn = $this->doDeleteItem( $key );
 			if ( !$innerReturn ) {
 				$totalReturn = false;
 			}
